@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>We are all rusty</title>
-  <meta name="description" content="Feeling rusty at the human:human parts of work? You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
+  <meta name="description" content="You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
   <meta property="og:title" content="We are all rusty">
-  <meta property="og:description" content="Feeling rusty at the human:human parts of work? You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
+  <meta property="og:description" content="You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="We are all rusty">
-  <meta name="twitter:description" content="Feeling rusty at the human:human parts of work? You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
+  <meta name="twitter:description" content="You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='72 72 144 144'%3E%3Cpolygon fill='%23444' points='215.46 71.96 143.5 71.96 71.46 144 143.5 144 143.5 216.04 215.44 144.1 215.46 71.96'/%3E%3C/svg%3E">
 </head>
@@ -21,7 +21,7 @@
   </main>
   <footer>
     <div class="links">
-      <a href="#" id="about-link">feeling rusty?</a>
+      <a href="https://www.rawsignal.ca/newsletter-archive/we-are-all-rusty?utm_source=rusty&utm_medium=web">feeling rusty?</a>
     </div>
     <div class="icons">
       <a href="https://github.com/johnath/rusty" aria-label="GitHub">
@@ -32,9 +32,6 @@
       </a>
     </div>
   </footer>
-  <dialog id="about">
-    <p>It actually doesn't matter at all why we're rusty or whether you think we have a right to be. What matters is that a lot of us are pretty out of practice when it comes to the human connection parts of work. Humans are social critters. We can do creative, expansive, increidble work. But we're worse at it, across a wide set of measures, when we try to go it alone. If you're feeling a bit rusty, you're in good company. This project is a much-needed vinegar soak for connection at work.</p>
-  </dialog>
   <script src="prompts.js"></script>
   <script>
 
@@ -78,16 +75,6 @@
 
     el.addEventListener("click", spin);
     spin();
-
-
-    let about = document.getElementById("about");
-    document.getElementById("about-link").addEventListener("click", function(e) {
-      e.preventDefault();
-      about.showModal();
-    });
-    about.addEventListener("click", function(e) {
-      if (e.target === about) about.close();
-    });
   </script>
 </body>
 </html>
