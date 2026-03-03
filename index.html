@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>We are rusty</title>
+  <meta name="description" content="Feeling rusty at the human:human parts of work? You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
+  <meta property="og:title" content="We are rusty">
+  <meta property="og:description" content="Feeling rusty at the human:human parts of work? You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="We are rusty">
+  <meta name="twitter:description" content="Feeling rusty at the human:human parts of work? You're in good company. We can do creative, expansive, incredible work. But we can't do it alone.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='72 72 144 144'%3E%3Cpolygon fill='%23444' points='215.46 71.96 143.5 71.96 71.46 144 143.5 144 143.5 216.04 215.44 144.1 215.46 71.96'/%3E%3C/svg%3E">
+</head>
+<body>
+  <main>
+    <p id="prompt"></p>
+  </main>
+  <footer>
+    <div class="links">
+      <a href="#" id="about-link">feeling rusty?</a>
+    </div>
+    <div class="icons">
+      <a href="https://github.com/" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.64 7.64 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a href="https://rawsignal.ca" aria-label="Raw Signal Group">
+        <svg viewBox="72 72 144 144" xmlns="http://www.w3.org/2000/svg"><polygon points="215.46 71.96 143.5 71.96 71.46 144 143.5 144 143.5 216.04 215.44 144.1 215.46 71.96"/></svg>
+      </a>
+    </div>
+  </footer>
+  <dialog id="about">
+    <p>It actually doesn't matter at all why we're rusty or whether you think we have a right to be. What matters is that a lot of us are pretty out of practice when it comes to the human connection parts of work. Humans are social critters. We can do creative, expansive, increidble work. But we're worse at it, across a wide set of measures, when we try to go it alone. If you're feeling a bit rusty, you're in good company. This project is a much-needed vinegar soak for connection at work.</p>
+  </dialog>
+  <script src="prompts.js"></script>
+  <script>
+    var el = document.getElementById("prompt");
+    var spinning = false;
+
+    function pick(exclude) {
+      var choice;
+      do { choice = PROMPTS[Math.random() * PROMPTS.length | 0]; }
+      while (choice === exclude && PROMPTS.length > 1);
+      return choice;
+    }
+
+    function spin() {
+      if (spinning) return;
+      spinning = true;
+      el.classList.add("spinning");
+
+      var current = el.textContent;
+      var steps = 18 + (Math.random() * 6 | 0);
+      var i = 0;
+
+      function step() {
+        el.textContent = pick(current);
+        i++;
+        if (i < steps) {
+          setTimeout(step, 30 + i * i * 1.2);
+        } else {
+          el.classList.remove("spinning");
+          spinning = false;
+          current = el.textContent;
+        }
+      }
+      step();
+    }
+
+    el.addEventListener("click", spin);
+    spin();
+
+    var about = document.getElementById("about");
+    document.getElementById("about-link").addEventListener("click", function(e) {
+      e.preventDefault();
+      about.showModal();
+    });
+    about.addEventListener("click", function(e) {
+      if (e.target === about) about.close();
+    });
+  </script>
+</body>
+</html>
